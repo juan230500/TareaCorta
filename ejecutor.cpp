@@ -15,6 +15,12 @@ void Ejecutor::GenerarBarras( int i)
     QLabel* Ltmp;
     int h;
 
+    this->LabelSec=new QLabel(w);
+    this->LabelSec->setGeometry(300,300,20,20);
+
+    this->List=new QListWidget(w);
+    this->List->setGeometry(250,50,100,250);
+
     for (;i<7;i++){
         h=40*i+20;
 
@@ -59,8 +65,13 @@ void Ejecutor::CicloActualizar()
     int limit=20;
 
     for (int i=0;i<limit;i++){
-        Actualizar();
         qDebug()<<"#"<<i;
+
+        LabelSec->setText(QString::number(i)+"s");
+        List->addItem("V"+QString::number(i));
+        usleep(50*1000);
+
+        Actualizar();
         usleep(msWait*1000);
     }
 

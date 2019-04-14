@@ -10,6 +10,7 @@
 #include <QString>
 #include <QDebug>
 #include <thread>
+#include <QListWidget>
 using namespace std;
 
 class Ejecutor
@@ -18,6 +19,8 @@ private:
     MainWindow* w;
     QLabel** ArrayL;
     QProgressBar** ArrayB;
+    QLabel* LabelSec;
+    QListWidget* List;
 public:
     /**
      * @brief Ejecutor

@@ -4,6 +4,7 @@
 #include "mainwindow.h"
 #include <unistd.h>
 #include <iostream>
+#include <string>
 #include <QApplication>
 #include <QProgressBar>
 #include <QLabel>

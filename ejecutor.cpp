@@ -15,11 +15,15 @@ void Ejecutor::GenerarBarras( int i)
     QLabel* Ltmp;
     int h;
 
+    QLabel* Labeltmp=new QLabel(w);
+    Labeltmp->setText("Cola de espera");
+    Labeltmp->setGeometry(250,0,100,100);
+
     this->LabelSec=new QLabel(w);
-    this->LabelSec->setGeometry(300,300,20,20);
+    this->LabelSec->setGeometry(50,300,100,20);
 
     this->List=new QListWidget(w);
-    this->List->setGeometry(250,50,100,250);
+    this->List->setGeometry(250,70,100,250);
 
     for (;i<7;i++){
         h=40*i+20;
@@ -44,7 +48,7 @@ void Ejecutor::GenerarBarras( int i)
 void Ejecutor::Actualizar(){
     int v1;
     int v2;
-    char* procesos="ABCDEF";
+    string procesos="ABCDEF";
 
     for (int i=0;i<7;i++){
         v1 = rand() % 100;
@@ -67,7 +71,7 @@ void Ejecutor::CicloActualizar()
     for (int i=0;i<limit;i++){
         qDebug()<<"#"<<i;
 
-        LabelSec->setText(QString::number(i)+"s");
+        LabelSec->setText("Tiempo total: "+QString::number(i)+"s");
         List->addItem("V"+QString::number(i));
         usleep(50*1000);
 

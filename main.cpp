@@ -24,8 +24,9 @@ int main(int argc, char *argv[])
 
     Ejecutor* E=new Ejecutor(&w,ArrayL,ArrayB);
     E->GenerarBarras();
-    thread t(&Ejecutor::CicloActualizar,E);
 
     w.show();
+
+    thread t(&Ejecutor::CicloActualizar,E);
     return a.exec();
 }

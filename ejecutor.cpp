@@ -31,18 +31,22 @@ void Ejecutor::GenerarBarras()
         Ltmp=new QLabel(w);
         Ltmp->setGeometry(20,h,20,20);
         Ltmp->setText("V"+QString::number(i+1));
+        usleep(50*1000);
 
         L=new QLabel(w);
         L->setGeometry(160,h,100,20);
         L->setText(QString::number(i+1));
+        usleep(50*1000);
 
         B=new QProgressBar (w);
         B->setGeometry(50,h,100,20);
         B->setValue(10*i);
+        usleep(50*1000);
 
         ArrayL[i]=L;
         ArrayB[i]=B;
     }
+    usleep(1000*1000);
 }
 
 void Ejecutor::Actualizar(){
@@ -70,6 +74,7 @@ void Ejecutor::CicloActualizar()
         qDebug()<<"#"<<i;
 
         LabelSec->setText("Tiempo total: "+QString::number(i)+"s");
+        usleep(50*1000);
         List->addItem("V"+QString::number(i));
 
         if (i%5==0){

@@ -53,11 +53,9 @@ void Ejecutor::Actualizar(){
     for (int i=0;i<7;i++){
         v1 = rand() % 100;
         ArrayB[i]->setValue(v1);
-    }
-
-    for (int i=0;i<7;i++){
         v2 = rand() % 6;
         ArrayL[i]->setText(QChar(procesos[v2]));
+        usleep(50*1000);
     }
 
     return;

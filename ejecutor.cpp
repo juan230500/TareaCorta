@@ -52,15 +52,13 @@ void Ejecutor::Actualizar(){
 
     for (int i=0;i<7;i++){
         PorcentajeProceso = rand() % 100;
-        ArrayB[i]->setValue(PorcentajeProceso);
-
         Proceso = rand() % 6;
+
+        ArrayB[i]->setValue(PorcentajeProceso);
         ArrayL[i]->setText(QChar(Letras[Proceso]));
 
         usleep(50*1000);
     }
-
-    return;
 }
 
 void Ejecutor::CicloActualizar()
@@ -73,10 +71,17 @@ void Ejecutor::CicloActualizar()
 
         LabelSec->setText("Tiempo total: "+QString::number(i)+"s");
         List->addItem("V"+QString::number(i));
+
+        if (i%5==0){
+            delete List->item(0);
+        }
+
         usleep(50*1000);
 
         Actualizar();
+
         usleep(msWait*1000);
+
     }
 
     return;

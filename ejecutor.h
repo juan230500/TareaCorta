@@ -32,7 +32,6 @@ public:
     Ejecutor(MainWindow *w, QLabel **ArrayL, QProgressBar **ArrayB);
     /**
      * @brief GenerarBarras Dibuja y agrupa los Labels y PrograssBar
-     * @param i
      */
     void GenerarBarras();
     /**

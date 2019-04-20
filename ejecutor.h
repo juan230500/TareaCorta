@@ -34,7 +34,7 @@ public:
      * @brief GenerarBarras Dibuja y agrupa los Labels y PrograssBar
      * @param i
      */
-    void GenerarBarras(int i=0);
+    void GenerarBarras();
     /**
      * @brief Actualizar Modifica los Labels y PrograssBar según la info del vehículo
      */

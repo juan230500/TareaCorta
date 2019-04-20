@@ -8,7 +8,7 @@ Ejecutor::Ejecutor(MainWindow *w, QLabel **ArrayL, QProgressBar **ArrayB)
 }
 
 
-void Ejecutor::GenerarBarras( int i)
+void Ejecutor::GenerarBarras()
 {
     QProgressBar* B;
     QLabel* L;
@@ -25,7 +25,7 @@ void Ejecutor::GenerarBarras( int i)
     this->List=new QListWidget(w);
     this->List->setGeometry(250,70,100,250);
 
-    for (;i<7;i++){
+    for (int i=0;i<7;i++){
         h=40*i+20;
 
         Ltmp=new QLabel(w);
@@ -46,15 +46,17 @@ void Ejecutor::GenerarBarras( int i)
 }
 
 void Ejecutor::Actualizar(){
-    int v1;
-    int v2;
-    string procesos="ABCDEF";
+    int PorcentajeProceso;
+    int Proceso;
+    string Letras="ABCDEF";
 
     for (int i=0;i<7;i++){
-        v1 = rand() % 100;
-        ArrayB[i]->setValue(v1);
-        v2 = rand() % 6;
-        ArrayL[i]->setText(QChar(procesos[v2]));
+        PorcentajeProceso = rand() % 100;
+        ArrayB[i]->setValue(PorcentajeProceso);
+
+        Proceso = rand() % 6;
+        ArrayL[i]->setText(QChar(Letras[Proceso]));
+
         usleep(50*1000);
     }
 

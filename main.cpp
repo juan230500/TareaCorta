@@ -20,22 +20,15 @@ int main(int argc, char *argv[])
 
     w.setGeometry(500,200,400,400);
 
-    QLabel* ArrayL[7]={};
-    QProgressBar* ArrayB[7]={};
+    QLabel* ArrayL[6]={};
+    QProgressBar* ArrayB[6]={};
 
-    AgendaGeneral A=AgendaGeneral::getInstance();
-    A.meter(5,6);
-    A.meter(5,7);
-    A.meter(5,8);
-    A.print();
-    A.sacar(5,7);
-    A.print();
-    qDebug()<<A.consultar(5,8);
-//    Ejecutor* E=new Ejecutor(&w,ArrayL,ArrayB);
-//    E->GenerarBarras();
 
-//    w.show();
+    Ejecutor* E=new Ejecutor(&w,ArrayL,ArrayB);
+    E->GenerarBarras();
 
-//    thread t(&Ejecutor::CicloActualizar,E);
+    w.show();
+
+    thread t(&Ejecutor::CicloActualizar,E);
     return a.exec();
 }

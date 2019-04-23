@@ -5,6 +5,8 @@ AgendaGeneral::AgendaGeneral()
 
 }
 
+
+
 void AgendaGeneral::sacar(int procesoactual,int vehiculo)
 {
     for (int i=0;i<3;i++){

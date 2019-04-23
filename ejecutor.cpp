@@ -5,6 +5,18 @@ Ejecutor::Ejecutor(MainWindow *w, QLabel **ArrayL, QProgressBar **ArrayB)
     this->w=w;
     this->ArrayL=ArrayL;
     this->ArrayB=ArrayB;
+    for (int i=0;i<6;i++){
+        vehiculos[i]=new vehiculo(i);
+
+    }
+}
+
+void Ejecutor::actualizarVehiculos()
+{
+    for (int i=0;i<6;i++){
+        vehiculos[i]->avanzar();
+
+    }
 }
 
 
@@ -25,7 +37,7 @@ void Ejecutor::GenerarBarras()
     this->List=new QListWidget(w);
     this->List->setGeometry(250,70,100,250);
 
-    for (int i=0;i<7;i++){
+    for (int i=0;i<6;i++){
         h=40*i+20;
 
         Ltmp=new QLabel(w);
@@ -52,14 +64,21 @@ void Ejecutor::GenerarBarras()
 void Ejecutor::Actualizar(){
     int PorcentajeProceso;
     int Proceso;
-    string Letras="ABCDEF";
-
-    for (int i=0;i<7;i++){
-        PorcentajeProceso = rand() % 100;
-        Proceso = rand() % 6;
+    int v=6;
+    for (int i=0;i<v;i++){
+        PorcentajeProceso = vehiculos[i]->dameEstadoActual();
+        Proceso = vehiculos[i]->dameProcesoActual();
+        vehiculos[i]->avanzar();
 
         ArrayB[i]->setValue(PorcentajeProceso);
-        ArrayL[i]->setText(QChar(Letras[Proceso]));
+        ArrayL[i]->setText(QChar(Proceso));
+
+        if(Proceso=='P' && !arrayDeCola[i]){
+            arrayDeCola[i]=1;
+            colaVehiculos.push(i);
+            colaProcesos.push(vehiculos[i]->getEstadoActual());
+            List->addItem("V"+QString::number(i+1));
+        }
 
         usleep(50*1000);
     }
@@ -67,17 +86,22 @@ void Ejecutor::Actualizar(){
 
 void Ejecutor::CicloActualizar()
 {
-    unsigned int msWait=1000;
-    int limit=20;
+    unsigned int msWait=2000;
+    int limit=30;
 
     for (int i=0;i<limit;i++){
-        qDebug()<<"#"<<i;
+        //qDebug()<<"#"<<i;
 
         LabelSec->setText("Tiempo total: "+QString::number(i)+"s");
         usleep(50*1000);
-        List->addItem("V"+QString::number(i));
 
-        if (i%5==0){
+        if (i%5==0 && colaProcesos.size()!=0){
+            AgendaGeneral *Agenda=&AgendaGeneral::getInstance();
+            Agenda->meter(colaProcesos.back(),colaVehiculos.back());
+            qDebug()<<"DATA"<<colaProcesos.back()<<" "<<colaVehiculos.back();
+            colaProcesos.pop();
+            colaVehiculos.pop();
+            Agenda->print();
             delete List->item(0);
         }
 

@@ -1,11 +1,17 @@
 #ifndef AGENDAGENERAL_H
 #define AGENDAGENERAL_H
 #include "qdebug.h"
+#include <queue>
+#include "iostream"
+
+using namespace std;
+
 
 class AgendaGeneral
 {
 private:
     int procesos[6][3]={}; //[LetraProceso][campo]
+
 public:
     static AgendaGeneral& getInstance()
             {
@@ -14,6 +20,7 @@ public:
                 return instance;
             }
     AgendaGeneral();
+
     /**
      * @brief sacar saca un vehiculo de un proceso
      * @param proceso

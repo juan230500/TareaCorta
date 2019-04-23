@@ -7,6 +7,12 @@ class AgendaGeneral
 private:
     int procesos[6][3]={}; //[LetraProceso][campo]
 public:
+    static AgendaGeneral& getInstance()
+            {
+                static AgendaGeneral    instance; // Guaranteed to be destroyed.
+                                      // Instantiated on first use.
+                return instance;
+            }
     AgendaGeneral();
     /**
      * @brief sacar saca un vehiculo de un proceso

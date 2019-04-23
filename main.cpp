@@ -8,6 +8,7 @@
 #include <QString>
 #include <QDebug>
 #include <thread>
+#include "agendageneral.h"
 using namespace std;
 
 int main(int argc, char *argv[])
@@ -22,11 +23,19 @@ int main(int argc, char *argv[])
     QLabel* ArrayL[7]={};
     QProgressBar* ArrayB[7]={};
 
-    Ejecutor* E=new Ejecutor(&w,ArrayL,ArrayB);
-    E->GenerarBarras();
+    AgendaGeneral A=AgendaGeneral::getInstance();
+    A.meter(5,6);
+    A.meter(5,7);
+    A.meter(5,8);
+    A.print();
+    A.sacar(5,7);
+    A.print();
+    qDebug()<<A.consultar(5,8);
+//    Ejecutor* E=new Ejecutor(&w,ArrayL,ArrayB);
+//    E->GenerarBarras();
 
-    w.show();
+//    w.show();
 
-    thread t(&Ejecutor::CicloActualizar,E);
+//    thread t(&Ejecutor::CicloActualizar,E);
     return a.exec();
 }

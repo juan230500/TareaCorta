@@ -28,12 +28,14 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     ejecutor.cpp \
-    agendageneral.cpp
+    agendageneral.cpp \
+    vehiculo.cpp
 
 HEADERS += \
         mainwindow.h \
     ejecutor.h \
-    agendageneral.h
+    agendageneral.h \
+    vehiculo.h
 
 FORMS += \
         mainwindow.ui

@@ -1,6 +1,7 @@
 #ifndef AGENDAGENERAL_H
 #define AGENDAGENERAL_H
 #include "qdebug.h"
+using namespace std;
 #include <queue>
 #include "iostream"
 

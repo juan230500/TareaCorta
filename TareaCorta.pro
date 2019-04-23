@@ -27,11 +27,13 @@ CONFIG += c++11
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    ejecutor.cpp
+    ejecutor.cpp \
+    agendageneral.cpp
 
 HEADERS += \
         mainwindow.h \
-    ejecutor.h
+    ejecutor.h \
+    agendageneral.h
 
 FORMS += \
         mainwindow.ui

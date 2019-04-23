@@ -39,10 +39,11 @@ bool AgendaGeneral::consultar(int procesoactual, int vehiculo)
 void AgendaGeneral::print()
 {
     for (int i=0;i<6;i++){
-        qDebug()<<"Proceso"<<i<<"==============";
+        cout<<"Proceso "<<i<<":";
         for (int j=0;j<3;j++){
-            qDebug()<<procesos[i][j];
+            cout<<procesos[i][j]<<"-";
         }
+        cout<<endl;
     }
-    qDebug()<<"Fin del reporte"<<"==============";
+    cout<<"Fin del reporte"<<"==============\n";
 }

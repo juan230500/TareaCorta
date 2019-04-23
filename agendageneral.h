@@ -1,6 +1,8 @@
 #ifndef AGENDAGENERAL_H
 #define AGENDAGENERAL_H
 #include "qdebug.h"
+#include <iostream>
+using namespace std;
 
 class AgendaGeneral
 {

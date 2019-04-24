@@ -11,7 +11,7 @@ using namespace std;
 class AgendaGeneral
 {
 private:
-    int procesos[6][3]={}; //[LetraProceso][campo]
+    int procesos[6][3]={{8,8,8},{8,8,8},{8,8,8},{8,8,8},{8,8,8},{8,8,8}}; //[LetraProceso][campo]
 
 public:
     static AgendaGeneral& getInstance()

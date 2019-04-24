@@ -11,16 +11,18 @@ public:
 
     vehiculo(int id);
     void avanzar();
-    void avanzarForzado();
+    void iniciar();
+
     char dameProcesoActual();
     int dameEstadoActual();
     int getEstadoActual() const;
     void setEstadoActual(int value);
 
+
 private:
     int id;
     char ordenDeProcesos[6];
-    char mensaje;
+    char mensaje=0;
     int tiempoDeProcesos [6];
     int  estadoActual=0;
     int  tiempoTranscurrido=0;

@@ -7,15 +7,6 @@ Ejecutor::Ejecutor(MainWindow *w, QLabel **ArrayL, QProgressBar **ArrayB)
     this->ArrayB=ArrayB;
     for (int i=0;i<6;i++){
         vehiculos[i]=new vehiculo(i);
-
-    }
-}
-
-void Ejecutor::actualizarVehiculos()
-{
-    for (int i=0;i<6;i++){
-        vehiculos[i]->avanzar();
-
     }
 }
 
@@ -57,6 +48,8 @@ void Ejecutor::GenerarBarras()
 
         ArrayL[i]=L;
         ArrayB[i]=B;
+
+        vehiculos[i]->iniciar();
     }
     usleep(1000*1000);
 }
@@ -64,11 +57,12 @@ void Ejecutor::GenerarBarras()
 void Ejecutor::Actualizar(){
     int PorcentajeProceso;
     int Proceso;
-    int v=6;
-    for (int i=0;i<v;i++){
+    int v=5;
+    for (int i=0;i<v+1;i++){
+        vehiculos[i]->avanzar();
+
         PorcentajeProceso = vehiculos[i]->dameEstadoActual();
         Proceso = vehiculos[i]->dameProcesoActual();
-        vehiculos[i]->avanzar();
 
         ArrayB[i]->setValue(PorcentajeProceso);
         ArrayL[i]->setText(QChar(Proceso));
@@ -82,6 +76,7 @@ void Ejecutor::Actualizar(){
 
         usleep(50*1000);
     }
+
 }
 
 void Ejecutor::CicloActualizar()
@@ -105,9 +100,12 @@ void Ejecutor::CicloActualizar()
             delete List->item(0);
         }
 
+
         usleep(50*1000);
 
         Actualizar();
+        AgendaGeneral *Agenda=&AgendaGeneral::getInstance();
+        Agenda->print();
 
         usleep(msWait*1000);
 

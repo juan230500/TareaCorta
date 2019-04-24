@@ -96,45 +96,46 @@ vehiculo::vehiculo(int id)
 }
 
 void vehiculo::avanzar()
-{     AgendaGeneral Agenda=AgendaGeneral::getInstance();
-      //qDebug()<<"SOY: "<<id<<"ESTOY EN: "<<estadoActual;
+{     AgendaGeneral* Agenda=&AgendaGeneral::getInstance();
+      //qDebug()<<"SOY: "<<id+1<<"ESTOY EN: "<<ordenDeProcesos[estadoActual];
       if (estadoActual==6){
-          mensaje='R';
+          return;
+      }
+
+      bool nopausa=Agenda->consultar(ordenDeProcesos[estadoActual]-65,id);
+      if(!nopausa){
+          mensaje='P';
           return;
       }
 
 
 
-      if(tiempoTranscurrido==0){
-          Agenda.meter(ordenDeProcesos[estadoActual],this->id);
-          tiempoTranscurrido++;
-      }
-      else if (tiempoTranscurrido==tiempoDeProcesos[estadoActual]) {
-          Agenda.sacar(ordenDeProcesos[estadoActual],this->id);
+      if (tiempoTranscurrido==tiempoDeProcesos[estadoActual]) {
+          Agenda->sacar(ordenDeProcesos[estadoActual]-65,this->id);
           estadoActual++;
           tiempoTranscurrido=0;
-          Agenda.meter(ordenDeProcesos[estadoActual],this->id);
+          Agenda->meter(ordenDeProcesos[estadoActual]-65,this->id);
       }
-      else {
-          bool nopausa=Agenda.consultar(ordenDeProcesos[estadoActual],id);
-          if(!nopausa){
-              mensaje='P';
-              return;
-          }
-          tiempoTranscurrido++;
 
+      tiempoTranscurrido++;
+
+      if (estadoActual==6){
+          tiempoTranscurrido=0;
+          Agenda->sacar(ordenDeProcesos[5]-65,this->id);
+          mensaje='R';
+          return;
       }
+
        mensaje=ordenDeProcesos[estadoActual];
 
 }
 
-void vehiculo::avanzarForzado()
+void vehiculo::iniciar()
 {
-    AgendaGeneral *Agenda=&AgendaGeneral::getInstance();
-    Agenda->meter(ordenDeProcesos[estadoActual],this->id);
-    tiempoTranscurrido++;
-    mensaje=ordenDeProcesos[estadoActual];
+    AgendaGeneral* Agenda=&AgendaGeneral::getInstance();
+    Agenda->meter(ordenDeProcesos[0]-65,this->id);
 }
+
 
 char vehiculo::dameProcesoActual()
 {

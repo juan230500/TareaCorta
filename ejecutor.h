@@ -39,10 +39,6 @@ public:
      */
     Ejecutor(MainWindow *w, QLabel **ArrayL, QProgressBar **ArrayB);
     /**
-     * @brief actualiza todos los vehiculos del array
-     */
-    void actualizarVehiculos();
-    /**
      * @brief GenerarBarras Dibuja y agrupa los Labels y PrograssBar
      */
     void GenerarBarras();

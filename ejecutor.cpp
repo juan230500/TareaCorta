@@ -92,8 +92,8 @@ void Ejecutor::CicloActualizar()
 
         if (i%5==0 && colaProcesos.size()!=0){
             AgendaGeneral *Agenda=&AgendaGeneral::getInstance();
-            Agenda->meter(colaProcesos.back(),colaVehiculos.back());
-            qDebug()<<"DATA"<<colaProcesos.back()<<" "<<colaVehiculos.back();
+            Agenda->meter(colaProcesos.front(),colaVehiculos.front());
+            qDebug()<<"DATA"<<colaProcesos.front()<<" "<<colaVehiculos.front();
             colaProcesos.pop();
             colaVehiculos.pop();
             Agenda->print();

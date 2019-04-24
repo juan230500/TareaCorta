@@ -10,7 +10,7 @@ vehiculo::vehiculo(int id)
         this->ordenDeProcesos[3]={'D'};
         this->ordenDeProcesos[4]={'E'};
         this->ordenDeProcesos[5]={'F'};
-        this->tiempoDeProcesos[0]={2};
+        this->tiempoDeProcesos[0]={5};
         this->tiempoDeProcesos[1]={2};
         this->tiempoDeProcesos[2]={4};
         this->tiempoDeProcesos[3]={1};
@@ -19,13 +19,13 @@ vehiculo::vehiculo(int id)
 
     }
     if (id==1){
-        this->ordenDeProcesos[0]={'C'};
-        this->ordenDeProcesos[1]={'A'};
+        this->ordenDeProcesos[0]={'A'};
+        this->ordenDeProcesos[1]={'C'};
         this->ordenDeProcesos[2]={'B'};
         this->ordenDeProcesos[3]={'E'};
         this->ordenDeProcesos[4]={'D'};
         this->ordenDeProcesos[5]={'F'};
-        this->tiempoDeProcesos[0]={2};
+        this->tiempoDeProcesos[0]={5};
         this->tiempoDeProcesos[1]={1};
         this->tiempoDeProcesos[2]={1};
         this->tiempoDeProcesos[3]={2};
@@ -34,13 +34,13 @@ vehiculo::vehiculo(int id)
 
     }
     if (id==2){
-        this->ordenDeProcesos[0]={'D'};
+        this->ordenDeProcesos[0]={'A'};
         this->ordenDeProcesos[1]={'E'};
-        this->ordenDeProcesos[2]={'A'};
+        this->ordenDeProcesos[2]={'D'};
         this->ordenDeProcesos[3]={'C'};
         this->ordenDeProcesos[4]={'B'};
         this->ordenDeProcesos[5]={'F'};
-        this->tiempoDeProcesos[0]={1};
+        this->tiempoDeProcesos[0]={5};
         this->tiempoDeProcesos[1]={4};
         this->tiempoDeProcesos[2]={3};
         this->tiempoDeProcesos[3]={2};
@@ -50,13 +50,13 @@ vehiculo::vehiculo(int id)
     }
     if (id==3){
         this->ordenDeProcesos[0]={'B'};
-        this->ordenDeProcesos[1]={'C'};
+        this->ordenDeProcesos[1]={'A'};
         this->ordenDeProcesos[2]={'D'};
-        this->ordenDeProcesos[3]={'A'};
+        this->ordenDeProcesos[3]={'C'};
         this->ordenDeProcesos[4]={'F'};
         this->ordenDeProcesos[5]={'E'};
         this->tiempoDeProcesos[0]={2};
-        this->tiempoDeProcesos[1]={1};
+        this->tiempoDeProcesos[1]={4};
         this->tiempoDeProcesos[2]={4};
         this->tiempoDeProcesos[3]={3};
         this->tiempoDeProcesos[4]={2};
@@ -125,7 +125,6 @@ void vehiculo::avanzar()
           mensaje='R';
           return;
       }
-
        mensaje=ordenDeProcesos[estadoActual];
 
 }
@@ -151,7 +150,7 @@ int vehiculo::dameEstadoActual()
 
 int vehiculo::getEstadoActual() const
 {
-    return estadoActual;
+    return ordenDeProcesos[estadoActual]-65;
 }
 
 void vehiculo::setEstadoActual(int value)

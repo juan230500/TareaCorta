@@ -10,7 +10,6 @@
 #include <thread>
 #include "agendageneral.h"
 using namespace std;
-#include "elemento.h"
 #include"cola.h"
 int main(int argc, char *argv[])
 {

@@ -73,7 +73,8 @@ void Ejecutor::Actualizar(){
             arrayDeCola[i]=1;
             colaVehiculos.Encolar(i);
             colaProcesos.Encolar(vehiculos[i]->getEstadoActual());
-            List->addItem("V"+QString::number(i+1));
+            char tmp=vehiculos[i]->getEstadoActual()+65;
+            List->addItem("V"+QString::number(i+1)+"-"+QChar(tmp));
         }
 
         usleep(50*1000);

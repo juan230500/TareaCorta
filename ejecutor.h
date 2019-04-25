@@ -16,7 +16,6 @@
 #include <queue>
 #include "iostream"
 #include "cola.h"
-#include "elemento.h"
 using namespace std;
 
 

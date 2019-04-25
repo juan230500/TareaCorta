@@ -25,6 +25,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
+    cola.cpp \
         main.cpp \
         mainwindow.cpp \
     ejecutor.cpp \
@@ -32,6 +33,7 @@ SOURCES += \
     vehiculo.cpp
 
 HEADERS += \
+    cola.h \
         mainwindow.h \
     ejecutor.h \
     agendageneral.h \

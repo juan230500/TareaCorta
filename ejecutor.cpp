@@ -1,7 +1,9 @@
 #include "ejecutor.h"
-
 Ejecutor::Ejecutor(MainWindow *w, QLabel **ArrayL, QProgressBar **ArrayB)
 {
+    //this->colaVehiculos->total = 299;
+    //this->colaProcesos->total = 299;
+
     this->w=w;
     this->ArrayL=ArrayL;
     this->ArrayB=ArrayB;
@@ -69,8 +71,8 @@ void Ejecutor::Actualizar(){
 
         if(Proceso=='P' && !arrayDeCola[i]){
             arrayDeCola[i]=1;
-            colaVehiculos.push(i);
-            colaProcesos.push(vehiculos[i]->getEstadoActual());
+            colaVehiculos.Encolar(i);
+            colaProcesos.Encolar(vehiculos[i]->getEstadoActual());
             List->addItem("V"+QString::number(i+1));
         }
 
@@ -89,13 +91,10 @@ void Ejecutor::CicloActualizar()
 
         LabelSec->setText("Tiempo total: "+QString::number(i)+"s");
         usleep(50*1000);
-
-        if (i%5==0 && colaProcesos.size()!=0){
+qDebug()<<" PREVIO A VOY A ELIMINAR DE LA COLA";
+        if (i%5==0 && !colaProcesos.ColaVacia()){
             AgendaGeneral *Agenda=&AgendaGeneral::getInstance();
-            Agenda->meter(colaProcesos.front(),colaVehiculos.front());
-            qDebug()<<"DATA"<<colaProcesos.front()<<" "<<colaVehiculos.front();
-            colaProcesos.pop();
-            colaVehiculos.pop();
+            Agenda->meter(colaProcesos.Desencolar(),colaVehiculos.Desencolar());
             Agenda->print();
             delete List->item(0);
         }

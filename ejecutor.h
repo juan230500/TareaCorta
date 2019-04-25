@@ -15,14 +15,18 @@
 #include"vehiculo.h"
 #include <queue>
 #include "iostream"
-
+#include "cola.h"
+#include "elemento.h"
 using namespace std;
+
 
 class Ejecutor
 {
 private:
-    queue <int> colaVehiculos;
-    queue <int> colaProcesos;
+    Cola colaVehiculos;
+    Cola colaProcesos ;
+    //queue <int> colaVehiculos;
+    //queue <int> colaProcesos;
     MainWindow* w;
     QLabel** ArrayL;
     QProgressBar** ArrayB;
